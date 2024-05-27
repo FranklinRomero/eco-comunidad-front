@@ -8,6 +8,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { NgIf } from '@angular/common';
 import { Router } from '@angular/router';
 import { CustomizerSettingsService } from '../../customizer-settings/customizer-settings.service';
+import { UsuariosService } from '../../services/usuario.service';
 
 @Component({
     selector: 'app-sign-in',
@@ -24,7 +25,8 @@ export class SignInComponent {
     constructor(
         private fb: FormBuilder,
         private router: Router,
-        public themeService: CustomizerSettingsService
+        public themeService: CustomizerSettingsService,
+        private usuarioService: UsuariosService
     ) {
         this.authForm = this.fb.group({
             email: ['', [Validators.required, Validators.email]],
@@ -63,4 +65,9 @@ export class SignInComponent {
         this.themeService.toggleRTLEnabledTheme();
     }
 
+    async iniciarSesion() {
+        const value = await this.usuarioService
+            .login(this.authForm.value.email, this.authForm.value.password);
+        console.log(value);
+    }
 }

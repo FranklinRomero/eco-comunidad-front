@@ -27,6 +27,7 @@
         "@fullcalendar/core": "^6.1.10",
         "@fullcalendar/daygrid": "^6.1.10",
         "@iplab/ngx-file-upload": "^17.1.0",
+        "@supabase/supabase-js": "^2.43.4",
         "apexcharts": "^3.49.0",
         "express": "^4.19.2",
         "moment": "^2.30.1",

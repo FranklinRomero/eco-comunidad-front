@@ -15,7 +15,7 @@
                         Don’t have an account yet? <a routerLink="/authentication/sign-up" class="text-daxa">Sign Up</a>
                     </p>
                 </div>
-                <form [formGroup]="authForm" (ngSubmit)="onSubmit()">
+                <form [formGroup]="authForm">
                     <div class="form-group">
                         <label class="main-label d-block lh-1 text-black">
                             Email Address
@@ -63,7 +63,7 @@
                             Forgot Password?
                         </a>
                     </div>
-                    <button mat-button class="btn" type="submit" [disabled]="authForm.invalid">
+                    <button mat-button class="btn" type="submit" (click)="iniciarSesion()" [disabled]="authForm.invalid">
                         Sign In
                     </button>
                     <div class="signin-with-socials text-center">

@@ -7,6 +7,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatTabsModule } from '@angular/material/tabs';
 import { RouterLink } from '@angular/router';
 import { CustomizerSettingsService } from '../../customizer-settings/customizer-settings.service';
+import { UsuariosService } from '../../services/usuario.service';
 
 @Component({
     selector: 'app-chat',
@@ -21,7 +22,8 @@ export class ChatComponent {
     isToggled = false;
 
     constructor(
-        public themeService: CustomizerSettingsService
+        public themeService: CustomizerSettingsService,
+        private usuarioService: UsuariosService
     ) {
         this.themeService.isToggled$.subscribe(isToggled => {
             this.isToggled = isToggled;
@@ -38,4 +40,8 @@ export class ChatComponent {
         this.themeService.toggleRTLEnabledTheme();
     }
 
+    iniciarSesion(email: string, password: string) {
+        const value = this.usuarioService.login(email, password);
+        console.log(value);
+    }
 }
